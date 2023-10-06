@@ -23,24 +23,26 @@ namespace TourneyPlaner.Pages
                             while (reader.Read())
                             {
                                 UserInfo user = new UserInfo();
+                                user.userID = reader.GetInt32(0);
                                 user.userName = reader.GetString(1);
                                 user.password = reader.GetString(2);
+                                user.salt = reader.GetString(3);
 
                                 listUsers.Add(user);
                             }
                         }
                     }
+                    connection.Close();
                 }
-
-
             }
             catch (Exception ex)
             {
 
             }
+            
         }
 
-        public string DeleteUser(string userName)
+        public string DeleteUser(int userID)
         {
             try
             {
@@ -48,14 +50,12 @@ namespace TourneyPlaner.Pages
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = $"DELETE FROM Users WHERE EMail='{userName}'";
+                    string sql = $"DELETE FROM Users WHERE UserID='{userID}'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            
-                        }
+                        command.ExecuteNonQuery();
                     }
+                    connection.Close();
                 }
             }
             
@@ -69,7 +69,9 @@ namespace TourneyPlaner.Pages
 
     public class UserInfo
     {
+        public int userID;
         public string userName;
         public string password;
+        public string salt;
     }
 }
