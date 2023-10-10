@@ -2,3 +2,30 @@
 @model TourneyPlaner.Pages.Player.CreatePlayerModel
 @{
 }
+<br />
+<h2>Create Player</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>TeamID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <input type="number" id="TeamID" name="TeamID" />
+            </td>
+            <td>
+                <input type="text" id="FirstName" name="FirstName" />
+            </td>
+            <td>
+                <input type="text" id="LastName" name="LastName" />
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="">Submit Changes</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

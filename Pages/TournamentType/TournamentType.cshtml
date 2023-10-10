@@ -2,3 +2,27 @@
 @model TourneyPlaner.Pages.TournamentType.TournamentTypeModel
 @{
 }
+<br />
+<h2>List of Tournament Types</h2>
+<a class='btn btn-primary btn-sm' href='/User/CreateTournament'>New Tournament Type</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tournament in Model.listTournamentType)
+        {
+            <tr>
+                <td>@tournament.tournamentTypeID</td>
+                <td>@tournament.tournamentTypeName</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/TournamentType/EditTournamentType?id=@tournament.tournamentTypeID">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/TournamentType/DeleteTournamentType?id=@tournament.tournamentTypeID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

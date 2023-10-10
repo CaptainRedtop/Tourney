@@ -4,7 +4,7 @@
 }
 <br />
 <h2>List of Users</h2>
-<a class='btn btn-primary btn-sm' href='/User/Create'>New User</a>
+<a class='btn btn-primary btn-sm' href='/User/CreateUser'>New User</a>
 <table class="table">
     <thead>
         <tr>
@@ -23,8 +23,8 @@
                 <td>@user.password</td>
                 <td>@user.salt</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/User/Edit?id=@user.userID">Edit</a>
-                    <a class="btn btn-danger btn-sm" href="/User/Edit?id=@user.userID">Delete</a>
+                    <a class="btn btn-primary btn-sm" href="/User/EditUser?id=@user.userID">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/User/DeleteUser?id=@user.userID">Delete</a>
                 </td>
             </tr>
         }

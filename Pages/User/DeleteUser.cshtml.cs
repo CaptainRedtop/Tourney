@@ -10,14 +10,14 @@ namespace TourneyPlaner.Pages.User
         public void OnGet()
         {
             string url = Request.GetDisplayUrl();
-            string[] noget = url.Split('=');
+            string[] urlID = url.Split('=');
             try
             {
                 string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = $"DELETE FROM User WHERE Id={noget.AsQueryable().Last()}";
+                    string sql = $"DELETE FROM User WHERE Id={urlID.AsQueryable().Last()}";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.ExecuteNonQuery();
