@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,26 +13,32 @@ namespace TourneyPlaner.Pages.Player
 
         }
 
-        public void EditPlayer()
+        public string EditPlayer()
         {
-            var playerID = Request.Form["PlayerID"];
+            string url = Request.GetDisplayUrl();
+            string[] playerID = url.Split('=');
+
             var teamID = Request.Form["TeamID"];
             var firstName = Request.Form["FirstnName"];
             var lastName = Request.Form["LastName"];
 
-            string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlaner;User ID=Admin;Password=Kode1234!";
+            string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE Player SET TeamID = {teamID} WHERE PlayerID = 1";
+                string sql = $"UPDATE Player SET TeamID = {teamID}, FirstName = {firstName}, LastName = {lastName} WHERE PlayerID = {playerID.AsQueryable().Last()}";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
             }
+            return "";
         }
 
-        
+        public void submitChanges(Object sender, EventArgs e)
+        {
+            EditPlayer();
+        }
     }
 }

@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
-namespace TourneyPlaner.Pages.Player
+namespace TourneyPlaner.Pages.Matchup
 {
-    public class PlayerModel : PageModel
+    public class MatchupModel : PageModel
     {
-        public List<PlayerInfo> listPlayer = new List<PlayerInfo>();
+        public List<MatchupInfo> matchupList = new List<MatchupInfo>();
         public void OnGet()
         {
             try
@@ -15,20 +15,21 @@ namespace TourneyPlaner.Pages.Player
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "SELECT * FROM Player";
+                    string sql = "SELECT * FROM Matchup";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                PlayerInfo player = new PlayerInfo();
-                                player.playerID = reader.GetInt32(0);
-                                player.firstName = reader.GetString(1);
-                                player.lastName = reader.GetString(2);
-                                player.teamID = reader.GetInt32(3);
+                                MatchupInfo matchup = new MatchupInfo();
+                                matchup.iD = reader.GetInt32(0);
+                                matchup.startDateTime = reader.GetDateTime(1);
+                                matchup.rounds = reader.GetInt32(2);
+                                matchup.tournamentID = reader.GetInt32(3);
+                                matchup.nextMatchupID = reader.GetInt32(4);
 
-                                listPlayer.Add(player);
+                                matchupList.Add(matchup);
                             }
                         }
                     }
@@ -41,12 +42,12 @@ namespace TourneyPlaner.Pages.Player
             }
         }
     }
-   
-    public class PlayerInfo
+    public class MatchupInfo
     {
-        public int playerID;
-        public string firstName;
-        public string lastName;
-        public int teamID;
+        public int iD;
+        public DateTime startDateTime;
+        public int rounds;
+        public int tournamentID;
+        public int nextMatchupID;
     }
 }

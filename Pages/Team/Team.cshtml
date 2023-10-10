@@ -1,0 +1,28 @@
+﻿@page
+@model TourneyPlaner.Pages.Team.TeamModel
+@{
+}
+<br />
+<h2>List of Players</h2>
+<a class='btn btn-primary btn-sm' href='/Player/Create'>New Player</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model.teamList)
+        {
+            <tr>
+                <td>@team.Id</td>
+                <td>@team.Name</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Player/Edit?id=@team.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Player/Delete?id=@team.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

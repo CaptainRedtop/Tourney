@@ -1,0 +1,36 @@
+﻿@page
+@model TourneyPlaner.Pages.GameType.GameTypeModel
+@{
+}
+<br />
+<h2>List of Game Types</h2>
+<a class='btn btn-primary btn-sm' href='/GameType/Create'>New Game Type</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>TeamsPerMatch</th>
+            <th>PointsPerDraw</th>
+            <th>PointsPerWin</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var gameType in Model.gameTypeList)
+        {
+            <tr>
+                <td>@gameType.Id</td>
+                <td>@gameType.Name</td>
+                <td>@gameType.TeamsPerMatch</td>
+                <td>@gameType.PointsForDraw</td>
+                <td>@gameType.PointsForWin</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/GameType/Edit?id=@gameType.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/GameType/Delete?id=@gameType.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

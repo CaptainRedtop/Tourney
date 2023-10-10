@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using TourneyPlaner.Pages.Player;
 
-namespace TourneyPlaner.Pages.Player
+namespace TourneyPlaner.Pages.Team
 {
-    public class PlayerModel : PageModel
+    public class TeamModel : PageModel
     {
-        public List<PlayerInfo> listPlayer = new List<PlayerInfo>();
+        public List<TeamInfo> teamList = new List<TeamInfo>();
         public void OnGet()
         {
             try
@@ -15,20 +16,18 @@ namespace TourneyPlaner.Pages.Player
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "SELECT * FROM Player";
+                    string sql = "SELECT * FROM Team";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                PlayerInfo player = new PlayerInfo();
-                                player.playerID = reader.GetInt32(0);
-                                player.firstName = reader.GetString(1);
-                                player.lastName = reader.GetString(2);
-                                player.teamID = reader.GetInt32(3);
+                                TeamInfo team = new TeamInfo();
+                                team.Id = reader.GetInt32(0);
+                                team.Name = reader.GetString(1);
 
-                                listPlayer.Add(player);
+                                teamList.Add(team);
                             }
                         }
                     }
@@ -41,12 +40,9 @@ namespace TourneyPlaner.Pages.Player
             }
         }
     }
-   
-    public class PlayerInfo
+    public class TeamInfo
     {
-        public int playerID;
-        public string firstName;
-        public string lastName;
-        public int teamID;
+        public int Id;
+        public string Name;
     }
 }

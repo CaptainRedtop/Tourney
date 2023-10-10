@@ -24,7 +24,8 @@
                 <input type="text" id="LastName" name="LastName" />
             </td>
             <td>
-                <a class="btn btn-primary btn-sm" href=@Model.EditPlayer>Submit Changes</a>
+                @* <a class="btn btn-primary btn-sm" href=@Model.EditPlayer()>Submit Changes</a> *@
+                <input type="button" id="btn" runat="server" onclick=@Model.submitChanges/>trdfygubhnijmkol
             </td>
         </tr>
     </tbody>
