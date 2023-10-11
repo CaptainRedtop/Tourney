@@ -2,3 +2,30 @@
 @model TourneyPlaner.Pages.FavoriteMatchup.FavoriteMatchupModel
 @{
 }
+<br />
+<h2>List of FavoriteMatchups</h2>
+<a class='btn btn-primary btn-sm' href='/FavoriteMatchup/Create'>New FavoriteMatchup</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>MatchupID</th>
+            <th>UserID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var favoriteMatchup in Model.favoriteMatchupList)
+        {
+            <tr>
+                <td>@favoriteMatchup.iD</td>
+                <td>@favoriteMatchup.matchupID</td>
+                <td>@favoriteMatchup.userID</td>
+
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/FavoriteMatchup/Edit?id=@favoriteMatchup.iD">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/FavoriteMatchup/Delete?id=@favoriteMatchup.iD">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

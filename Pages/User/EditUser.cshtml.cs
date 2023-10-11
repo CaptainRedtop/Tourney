@@ -9,7 +9,7 @@ namespace TourneyPlaner.Pages.User
     public class EditModel : PageModel
     {
         [BindProperty]
-        public PlayerEdit PlayerEdit { get; set; }
+        public UserEdit userEdit { get; set; }
         public void OnGet()
         {
 
@@ -17,35 +17,34 @@ namespace TourneyPlaner.Pages.User
 
         public IActionResult OnPost()
         {
-            string firstName = PlayerEdit.firstName;
-            string lastName = PlayerEdit.lastName;
-            int teamID = PlayerEdit.teamID;
+            string email = userEdit.email;
+            string passwordHash = userEdit.passwordHash;
+            string salt = userEdit.salt;
 
             string url = Request.GetDisplayUrl();
-            string[] playerID = url.Split('=');
+            string[] urlID = url.Split('=');
 
             string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE Player SET FirstName = '{firstName}', LastName = '{lastName}', TeamId = {teamID} WHERE Id = {playerID.AsQueryable().Last()}";
+                string sql = $"UPDATE User SET Email = '{email}', PasswordHash = '{passwordHash}', Salt = '{salt}' WHERE Id = {urlID.AsQueryable().Last()}";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
             }
-            return RedirectToPage("/Player/Player");
+            return RedirectToPage("/User/User");
         }
     }
-    public class PlayerEdit
+    public class UserEdit
     {
         [Required]
-        public string firstName { get; set; }
+        public string email { get; set; }
         [Required]
-        public string lastName { get; set; }
+        public string passwordHash { get; set; }
         [Required]
-        public int teamID { get; set; }
+        public string salt { get; set; }
     }
-}
 }

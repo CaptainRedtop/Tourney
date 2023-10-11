@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
-namespace TourneyPlaner.Pages.Matchup
+namespace TourneyPlaner.Pages.MatchupTeam
 {
     public class DeleteModel : PageModel
     {
@@ -17,7 +17,7 @@ namespace TourneyPlaner.Pages.Matchup
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = $"DELETE FROM Matchup WHERE Id={urlID.AsQueryable().Last()}";
+                    string sql = $"DELETE FROM MatchupTeam WHERE Id={urlID.AsQueryable().Last()}";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.ExecuteNonQuery();

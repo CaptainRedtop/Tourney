@@ -2,3 +2,55 @@
 @model TourneyPlaner.Pages.GameType.EditModel
 @{
 }
+<br />
+<h2>Edit Game Type</h2>
+<br />
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class"text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="GameTypeEdit.name"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="GameTypeEdit.name" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="GameTypeEdit.name"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="GameTypeEdit.teamsPerMatch"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="GameTypeEdit.teamsPerMatch" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="GameTypeEdit.teamsPerMatch"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="GameTypeEdit.pointsForDraw"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="GameTypeEdit.pointsForDraw" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="GameTypeEdit.pointsForDraw"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="GameTypeEdit.pointsForWin"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="GameTypeEdit.pointsForWin" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="GameTypeEdit.pointsForWin"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+            <div class="col-5">
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -11,7 +11,7 @@ namespace TourneyPlaner.Pages.Player
     public class EditModel : PageModel
     {
         [BindProperty]
-        public PlayerEdit PlayerEdit { get; set; }
+        public CreatePlayer PlayerEdit { get; set; }
         public void OnGet()
         {
 
@@ -40,7 +40,7 @@ namespace TourneyPlaner.Pages.Player
             return RedirectToPage("/Player/Player");
         }
     }
-    public class PlayerEdit
+    public class CreatePlayer
     {
         [Required]
         public string firstName { get; set; }

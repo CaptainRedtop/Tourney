@@ -10,30 +10,30 @@
         <div class"text-danger" asp-validation-summary="ModelOnly"></div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="PlayerEdit.firstName"></label>
+                <label asp-for="userEdit.email"></label>
             </div>
             <div class="col-5">
-                <input type="text" asp-for="PlayerEdit.firstName" class="form-control" />
+                <input type="text" asp-for="userEdit.email" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="PlayerEdit.firstName"></span>
+            <span class="text-danger" asp-validation-for="userEdit.email"></span>
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="PlayerEdit.lastName"></label>
+                <label asp-for="userEdit.passwordHash"></label>
             </div>
             <div class="col-5">
-                <input type="text" asp-for="PlayerEdit.lastName" class="form-control" />
+                <input type="text" asp-for="userEdit.passwordHash" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="PlayerEdit.lastName"></span>
+            <span class="text-danger" asp-validation-for="userEdit.passwordHash"></span>
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="PlayerEdit.teamID"></label>
+                <label asp-for="userEdit.salt"></label>
             </div>
             <div class="col-5">
-                <input type="number" asp-for="PlayerEdit.teamID" class="form-control" />
+                <input type="text" asp-for="userEdit.salt" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="PlayerEdit.teamID"></span>
+            <span class="text-danger" asp-validation-for="userEdit.salt"></span>
         </div>
         <div class="form-group row">
             <div class="col-2">

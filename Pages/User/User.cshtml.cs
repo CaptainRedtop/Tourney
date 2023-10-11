@@ -41,30 +41,6 @@ namespace TourneyPlaner.Pages
             }
             
         }
-
-        public string DeleteUser(int userID)
-        {
-            try
-            {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlaner;User ID=Admin;Password=Kode1234!";
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string sql = $"DELETE FROM Users WHERE UserID='{userID}'";
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        command.ExecuteNonQuery();
-                    }
-                    connection.Close();
-                }
-            }
-            
-            catch (Exception ex)
-            {
-
-            }
-            return "";
-        }
     }
 
     public class UserInfo

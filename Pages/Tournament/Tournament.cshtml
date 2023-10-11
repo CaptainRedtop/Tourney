@@ -4,7 +4,7 @@
 }
 <br />
     <h2>List of Tournaments</h2>
-    <a class='btn btn-primary btn-sm' href='/Tournament/Create'>New Tournament</a>
+    <a class='btn btn-primary btn-sm' href='/Tournament/CreateTournament'>New Tournament</a>
     <table class="table">
         <thead>
             <tr>
@@ -29,8 +29,8 @@
                     <td>@tournament.tournementTypeID</td>
                     <td>@tournament.userID</td>
                     <td>
-                        <a class="btn btn-primary btn-sm" href="/User/Edit?id=@tournament.tournamentID">Edit</a>
-                        <a class="btn btn-danger btn-sm" href="/User/Edit?id=@tournament.tournamentID">Delete</a>
+                        <a class="btn btn-primary btn-sm" href="/Tournament/EditTournament?id=@tournament.tournamentID">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/Tournament/EditTournament?id=@tournament.tournamentID">Delete</a>
                     </td>
                 </tr>
             }

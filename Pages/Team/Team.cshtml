@@ -4,7 +4,7 @@
 }
 <br />
 <h2>List of Teams</h2>
-<a class='btn btn-primary btn-sm' href='/Player/Create'>New Player</a>
+<a class='btn btn-primary btn-sm' href='/Team/CreateTeam'>New Player</a>
 <table class="table">
     <thead>
         <tr>
@@ -19,8 +19,8 @@
                 <td>@team.Id</td>
                 <td>@team.Name</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Player/Edit?id=@team.Id">Edit</a>
-                    <a class="btn btn-danger btn-sm" href="/Player/Delete?id=@team.Id">Delete</a>
+                    <a class="btn btn-primary btn-sm" href="/Team/EditTeam?id=@team.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Team/DeleteTeam?id=@team.Id">Delete</a>
                 </td>
             </tr>
         }

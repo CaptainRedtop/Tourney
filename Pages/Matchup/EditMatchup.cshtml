@@ -2,3 +2,55 @@
 @model TourneyPlaner.Pages.Matchup.EditModel
 @{
 }
+<br />
+<h2>Edit Matchup</h2>
+<br />
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class"text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="MatchupEdit.startDateTime"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="MatchupEdit.startDateTime" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="MatchupEdit.startDateTime"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="MatchupEdit.rounds"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="MatchupEdit.rounds" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="MatchupEdit.rounds"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="MatchupEdit.tournamentId"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="MatchupEdit.tournamentId" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="MatchupEdit.tournamentId"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="MatchupEdit.nextMatchupId"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="MatchupEdit.nextMatchupId" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="MatchupEdit.nextMatchupId"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+            <div class="col-5">
+            </div>
+        </div>
+    </form>
+</div>
+

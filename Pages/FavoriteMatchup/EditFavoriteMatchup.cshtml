@@ -3,27 +3,36 @@
 @{
 }
 <br />
-<h2>Edit Player</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Matchup ID</th>
-            <th>User ID</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <input type="number" id="ID" name="ID" />
-            </td>
-            <td>
-                <input type="number" id="MatchupID" name="Matchup ID" />
-            </td>
-            <td>
-                <input type="number" id="UserID" name="User ID" />
-            </td>
-        </tr>
-    </tbody>
-</table>
+<h2>Edit Favorite Matchup</h2>
+<br />
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class"text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="FavoriteMatchupEdit.matchupId"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="FavoriteMatchupEdit.matchupId" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="FavoriteMatchupEdit.matchupId"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="FavoriteMatchupEdit.userId"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="FavoriteMatchupEdit.matchupId" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="FavoriteMatchupEdit.userId"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+            <div class="col-5">
+            </div>
+        </div>
+    </form>
+</div>
 
