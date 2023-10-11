@@ -6,10 +6,10 @@ using System.Data.SqlClient;
 
 namespace TourneyPlaner.Pages.User
 {
-    public class EditModel : PageModel
+    public class CreateUser_Model : PageModel
     {
         [BindProperty]
-        public UserCreate userEdit { get; set; }
+        public CreateUser createUser { get; set; }
         public void OnGet()
         {
 
@@ -17,18 +17,15 @@ namespace TourneyPlaner.Pages.User
 
         public IActionResult OnPost()
         {
-            string email = userEdit.email;
-            string passwordHash = userEdit.passwordHash;
-            string salt = userEdit.salt;
-
-            string url = Request.GetDisplayUrl();
-            string[] urlID = url.Split('=');
+            string email = createUser.email;
+            string passwordHash = createUser.passwordHash;
+            string salt = createUser.salt;
 
             string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE User SET Email = '{email}', PasswordHash = '{passwordHash}', Salt = '{salt}' WHERE Id = {urlID.AsQueryable().Last()}";
+                string sql = $"INSERT INTO User(Email, PasswordHash, Salt) VALUSE ({email}', '{passwordHash}', '{salt}')";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
@@ -38,7 +35,7 @@ namespace TourneyPlaner.Pages.User
             return RedirectToPage("/User/User");
         }
     }
-    public class UserCreate
+    public class CreateUser
     {
         [Required]
         public string email { get; set; }

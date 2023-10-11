@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 
-namespace TourneyPlaner.Pages.User
+namespace TourneyPlaner.Pages.Team
 {
-    public class EditModel : PageModel
+    public class CreateTeamModel : PageModel
     {
         [BindProperty]
-        public UserCreate userEdit { get; set; }
+        public TeamCreate teamCreate { get; set; }
         public void OnGet()
         {
 
@@ -17,34 +17,25 @@ namespace TourneyPlaner.Pages.User
 
         public IActionResult OnPost()
         {
-            string email = userEdit.email;
-            string passwordHash = userEdit.passwordHash;
-            string salt = userEdit.salt;
-
-            string url = Request.GetDisplayUrl();
-            string[] urlID = url.Split('=');
+            string name = teamCreate.name;
 
             string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE User SET Email = '{email}', PasswordHash = '{passwordHash}', Salt = '{salt}' WHERE Id = {urlID.AsQueryable().Last()}";
+                string sql = $"INSERT INTO Team(Name) VALUES('{name}')";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
             }
-            return RedirectToPage("/User/User");
+            return RedirectToPage("/Team/Team");
         }
     }
-    public class UserCreate
+    public class TeamCreate
     {
         [Required]
-        public string email { get; set; }
-        [Required]
-        public string passwordHash { get; set; }
-        [Required]
-        public string salt { get; set; }
+        public string name { get; set; }
     }
 }

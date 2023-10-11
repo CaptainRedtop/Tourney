@@ -1,0 +1,46 @@
+﻿@page
+@model TourneyPlaner.Pages.User.CreateUser_Model
+@{
+}
+<br />
+<h2>Create User</h2>
+<br />
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class"text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="createUser.email"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="createUser.email" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="createUser.email"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="createUser.passwordHash"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="createUser.passwordHash" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="createUser.passwordHash"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="createUser.salt"></label>
+            </div>
+            <div class="col-5">
+                <input type="number" asp-for="createUser.salt" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="createUser.salt"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+            <div class="col-5">
+            </div>
+        </div>
+    </form>
+</div>

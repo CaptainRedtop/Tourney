@@ -6,10 +6,10 @@ using System.Data.SqlClient;
 
 namespace TourneyPlaner.Pages.Tournament
 {
-    public class EditModel : PageModel
+    public class CreateTournamentModel : PageModel
     {
         [BindProperty]
-        public TournamentCreate TournamentEdit { get; set; }
+        public CreateTournament TournamentCreate { get; set; }
         public void OnGet()
         {
 
@@ -17,21 +17,18 @@ namespace TourneyPlaner.Pages.Tournament
 
         public IActionResult OnPost()
         {
-            string name = TournamentEdit.name;
-            DateOnly startDate = TournamentEdit.startDate;
-            DateOnly endDate = TournamentEdit.endDate;
-            int gameTypeID = TournamentEdit.gameTypeID;
-            int tournamentTypeID = TournamentEdit.tournamentTypeID;
-            int userID = TournamentEdit.userID;
-
-            string url = Request.GetDisplayUrl();
-            string[] urlID = url.Split('=');
+            string name = TournamentCreate.name;
+            DateOnly startDate = TournamentCreate.startDate;
+            DateOnly endDate = TournamentCreate.endDate;
+            int gameTypeID = TournamentCreate.gameTypeID;
+            int tournamentTypeID = TournamentCreate.tournamentTypeID;
+            int userID = TournamentCreate.userID;
 
             string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE Tournament SET name = '{name}', StartDate = {startDate}, EndDate = {endDate}, GameTypeId = {gameTypeID}, TournamentTypeId = {tournamentTypeID}, UserId = {userID} WHERE Id = {urlID.AsQueryable().Last()}";
+                string sql = $"INSERT INTO Tournament(Name, StartDate, EndDate, GameTypeId, TournamentTypeId, UserId) VALUES('{name}',{startDate}, {endDate}, {gameTypeID}, {tournamentTypeID}, {userID})";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
@@ -41,7 +38,7 @@ namespace TourneyPlaner.Pages.Tournament
             return RedirectToPage("/Tournament/Tournament");
         }
     }
-    public class TournamentCreate
+    public class CreateTournament
     {
         [Required]
         public string name { get; set; }

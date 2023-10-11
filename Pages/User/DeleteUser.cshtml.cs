@@ -7,7 +7,7 @@ namespace TourneyPlaner.Pages.User
 {
     public class DeleteModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
             string url = Request.GetDisplayUrl();
             string[] urlID = url.Split('=');
@@ -30,6 +30,7 @@ namespace TourneyPlaner.Pages.User
             {
 
             }
+            return RedirectToPage("/User/User");
         }
     }
 }

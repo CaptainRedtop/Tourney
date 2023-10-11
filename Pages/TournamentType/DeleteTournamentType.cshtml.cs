@@ -7,13 +7,12 @@ namespace TourneyPlaner.Pages.TournamentType
 {
     public class DeleteModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
             string url = Request.GetDisplayUrl();
             string[] urlID = url.Split('=');
             try
             {
-                //string connectionString = "Data Source=zbc-s-nick9281;Initial Catalog=HjemmeTest;User ID=HjemmeLogin;Password=Kode1234!";
                 string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -31,6 +30,7 @@ namespace TourneyPlaner.Pages.TournamentType
             {
 
             }
+            return RedirectToPage("/TournamentType/TournamentType");
         }
     }
 }

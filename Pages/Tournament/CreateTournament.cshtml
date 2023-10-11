@@ -1,0 +1,73 @@
+﻿@page
+@model TourneyPlaner.Pages.Tournament.CreateTournamentModel
+@{
+}
+<br />
+<h2>Create Tournament</h2>
+<br />
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class"text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="TournamentCreate.name"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="TournamentCreate.name" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="TournamentCreate.name"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="TournamentCreate.startDate"></label>
+            </div>
+            <div class="col-5">
+                <input type="date" asp-for="TournamentCreate.startDate" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="TournamentCreate.startDate"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="TournamentCreate.endDate"></label>
+            </div>
+            <div class="col-5">
+                <input type="date" asp-for="TournamentCreate.endDate" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="TournamentCreate.endDate"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="TournamentCreate.gameTypeID"></label>
+            </div>
+            <div class="col-5">
+                <input type="number" asp-for="TournamentCreate.gameTypeID" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="TournamentCreate.gameTypeID"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="TournamentCreate.tournamentTypeID"></label>
+            </div>
+            <div class="col-5">
+                <input type="number" asp-for="TournamentCreate.tournamentTypeID" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="TournamentCreate.tournamentTypeID"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="TournamentCreate.userID"></label>
+            </div>
+            <div class="col-5">
+                <input type="number" asp-for="TournamentCreate.userID" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="TournamentCreate.userID"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+            <div class="col-5">
+            </div>
+        </div>
+    </form>
+</div>
