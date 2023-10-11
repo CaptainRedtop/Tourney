@@ -8,7 +8,7 @@ namespace TourneyPlaner.Pages.Player
 {
     public class DeletePlayerModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
             string url = Request.GetDisplayUrl();
             string[] noget = url.Split('=');
@@ -31,6 +31,7 @@ namespace TourneyPlaner.Pages.Player
             {
 
             }
+            return RedirectToPage("/Player/Player");
         }
     }
 }
