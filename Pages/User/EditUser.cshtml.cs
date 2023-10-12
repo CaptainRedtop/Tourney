@@ -26,6 +26,7 @@ namespace TourneyPlaner.Pages.User
             string passwordHash = userEdit.passwordHash;
             string salt = userEdit.salt;
 
+            // Extracts and splits URL into substrings by = in an array to get record ID
             string url = Request.GetDisplayUrl();
             string[] urlID = url.Split('=');
 
@@ -34,7 +35,7 @@ namespace TourneyPlaner.Pages.User
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE [User] SET Email = '{email}', PasswordHash = '{passwordHash}', Salt = '{salt}' WHERE Id = {urlID.AsQueryable().Last()}";
+                string sql = $"UPDATE [User] SET Email = '{email}', PasswordHash = '{passwordHash}', Salt = '{salt}' WHERE Id = {urlID.AsQueryable().Last() /* Gets last substring (record ID) */ }";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();

@@ -29,6 +29,7 @@ namespace TourneyPlaner.Pages.Tournament
             int tournamentTypeID = TournamentEdit.tournamentTypeID;
             int userID = TournamentEdit.userID;
 
+            // Extracts and splits URL into substrings by = in an array to get record ID
             string url = Request.GetDisplayUrl();
             string[] urlID = url.Split('=');
 
@@ -36,7 +37,7 @@ namespace TourneyPlaner.Pages.Tournament
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE Tournament SET name = '{name}', StartDate = {startDate}, EndDate = {endDate}, GameTypeId = {gameTypeID}, TournamentTypeId = {tournamentTypeID}, UserId = {userID} WHERE Id = {urlID.AsQueryable().Last()}";
+                string sql = $"UPDATE Tournament SET name = '{name}', StartDate = {startDate}, EndDate = {endDate}, GameTypeId = {gameTypeID}, TournamentTypeId = {tournamentTypeID}, UserId = {userID} WHERE Id = {urlID.AsQueryable().Last() /* Gets last substring (record ID) */ }";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();

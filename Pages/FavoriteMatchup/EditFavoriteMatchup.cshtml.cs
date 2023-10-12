@@ -27,6 +27,7 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
             int matchupId = FavoriteMatchupEdit.matchupId;
             int userId = FavoriteMatchupEdit.userId;
 
+            // Extracts and splits URL into substrings by = in an array to get record ID
             string url = Request.GetDisplayUrl();
             string[] iD = url.Split('=');
 
@@ -34,7 +35,7 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE FavoriteMatchup SET MatchupId = '{matchupId}', UserId = '{userId}' WHERE Id = {iD.AsQueryable().Last()}";
+                string sql = $"UPDATE FavoriteMatchup SET MatchupId = '{matchupId}', UserId = '{userId}' WHERE Id = {iD.AsQueryable().Last() /* Gets last substring (record ID) */ }";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();

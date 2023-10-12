@@ -29,6 +29,7 @@ namespace TourneyPlaner.Pages.Matchup
             int tournamentId = MatchupEdit.tournamentId;
             int nextMatchupId = MatchupEdit.nextMatchupId;
 
+            // Extracts and splits URL into substrings by = in an array to get record ID
             string url = Request.GetDisplayUrl();
             string[] iD = url.Split('=');
 
@@ -36,7 +37,7 @@ namespace TourneyPlaner.Pages.Matchup
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE Matchup SET StartDateTime = '{startDateTime}', Rounds = '{rounds}', TournamentId = '{tournamentId}', NextMatchupId = '{nextMatchupId}' WHERE Id = {iD.AsQueryable().Last()}";
+                string sql = $"UPDATE Matchup SET StartDateTime = '{startDateTime}', Rounds = '{rounds}', TournamentId = '{tournamentId}', NextMatchupId = '{nextMatchupId}' WHERE Id = {iD.AsQueryable().Last() /* Gets last substring (record ID) */ }";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();

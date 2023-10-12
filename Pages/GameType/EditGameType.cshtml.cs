@@ -29,6 +29,7 @@ namespace TourneyPlaner.Pages.GameType
             int pointsForDraw = GameTypeEdit.pointsForDraw;
             int pointsForWin = GameTypeEdit.pointsForWin;
 
+            // Extracts and splits URL into substrings by = in an array to get record ID
             string url = Request.GetDisplayUrl();
             string[] iD = url.Split('=');
 
@@ -36,7 +37,7 @@ namespace TourneyPlaner.Pages.GameType
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE GameType SET Name = '{name}', TeamsPerMatch = '{teamsPerMatch}', PointsForDraw = '{pointsForDraw}', PointsForWin = '{pointsForWin}' WHERE Id = {iD.AsQueryable().Last()}";
+                string sql = $"UPDATE GameType SET Name = '{name}', TeamsPerMatch = '{teamsPerMatch}', PointsForDraw = '{pointsForDraw}', PointsForWin = '{pointsForWin}' WHERE Id = {iD.AsQueryable().Last() /* Gets last substring (record ID) */ }";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
