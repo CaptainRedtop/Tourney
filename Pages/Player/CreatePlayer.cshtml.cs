@@ -15,7 +15,10 @@ namespace TourneyPlaner.Pages.Player
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to create a player, inserts the player's attributes as a row for the database table
+        /// </summary>
+        /// <returns>Tournaments page</returns>
         public IActionResult OnPost()
         {
             string firstName = PlayerCreate.firstName;
@@ -36,6 +39,9 @@ namespace TourneyPlaner.Pages.Player
             return RedirectToPage("/Player/Player");
         }
     }
+    /// <summary>
+    /// Required attributes for creating a player
+    /// </summary>
     public class PlayerCreate
     {
         [Required]

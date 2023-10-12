@@ -8,6 +8,10 @@ namespace TourneyPlaner.Pages.Matchup
     public class DeleteModel : PageModel
     {
         Connection con = new Connection();
+
+        /// <summary>
+        /// Upon selecting a matchup to delete, deletes said matchup from the database
+        /// </summary>
         public void OnGet()
         {
             string url = Request.GetDisplayUrl();

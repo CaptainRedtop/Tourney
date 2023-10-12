@@ -8,7 +8,13 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
     {
         Connection con = new Connection();
 
+
+        // Holds list of favorite matchups to display on HTML
         public List<FavoriteMatchupInfo> favoriteMatchupList = new List<FavoriteMatchupInfo>();
+
+        /// <summary>
+        /// Gets every favorite matchup in the table, adds it to a list to display on the html page
+        /// </summary>
         public void OnGet()
         {
             try
@@ -22,6 +28,7 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+                            // For every favorite matchup in table, creates an object that represents said favorite matchup, and adds it to a list
                             while (reader.Read())
                             {
                                 FavoriteMatchupInfo favoriteMatchup = new FavoriteMatchupInfo();
@@ -42,10 +49,14 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
             }
         }
     }
+
+    /// <summary>
+    /// Required attributes for displaying a favorite matchup
+    /// </summary>
     public class FavoriteMatchupInfo
-    {
-        public int iD;
-        public int matchupID;
-        public int userID;
+        {
+            public int iD;
+            public int matchupID;
+            public int userID;
+        }
     }
-}

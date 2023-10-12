@@ -7,8 +7,10 @@ namespace TourneyPlaner.Pages.Player
     public class PlayerModel : PageModel
     {
         Connection con = new Connection();
+
         // Holds list of players to display on HTML
         public List<PlayerInfo> listPlayer = new List<PlayerInfo>();
+
         /// <summary>
         /// Gets every player in the table, adds it to a list to display on the html page
         /// </summary>

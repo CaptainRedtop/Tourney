@@ -16,7 +16,10 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to create a favorite matchup, inserts the favorite matchup's attributes as a row for the database table
+        /// </summary>
+        /// <returns>Matchups page</returns>
         public IActionResult OnPost()
         {
             int matchupId = FavoriteMatchupCreate.matchupId;
@@ -36,6 +39,9 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
             return RedirectToPage("/FavoriteMatchup/FavoriteMatchup");
         }
     }
+    /// <summary>
+    /// Required attributes for creating a favorite matchup
+    /// </summary>
     public class FavoriteMatchupCreate
     {
         [Required]

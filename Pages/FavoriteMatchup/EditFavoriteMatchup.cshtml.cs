@@ -18,7 +18,10 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to edit a favorite matchup's data, reflects the changes onto the database
+        /// </summary>
+        /// <returns>Matchups page</returns>
         public IActionResult OnPost()
         {
             int matchupId = FavoriteMatchupEdit.matchupId;
@@ -41,6 +44,9 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
             return RedirectToPage("/FavoriteMatchup/FavoriteMatchup");
         }
     }
+    /// <summary>
+    /// Required attributes for editing a favorite matchup
+    /// </summary>
     public class FavoriteMatchupEdit
     {
         [Required]

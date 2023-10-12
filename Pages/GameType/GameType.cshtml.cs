@@ -9,7 +9,12 @@ namespace TourneyPlaner.Pages.GameType
     {
         Connection con = new Connection();
 
+        // Holds list of game types to display on HTML
         public List<GameTypeInfo> gameTypeList = new List<GameTypeInfo>();
+
+        /// <summary>
+        /// Gets every game type in the table, adds it to a list to display on the html page
+        /// </summary>
         public void OnGet()
         {
             try
@@ -23,7 +28,8 @@ namespace TourneyPlaner.Pages.GameType
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            while(reader.Read())
+                            // For every game type in table, creates an object that represents said game type, and adds it to a list
+                            while (reader.Read())
                             {
                                 GameTypeInfo gameType = new GameTypeInfo();
                                 gameType.Id = reader.GetInt32(0);
@@ -45,6 +51,9 @@ namespace TourneyPlaner.Pages.GameType
             }
         }
     }
+    /// <summary>
+    /// Required attributes for displaying a game type
+    /// </summary>
     public class GameTypeInfo
     {
         public int Id;

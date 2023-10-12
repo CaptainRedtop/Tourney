@@ -17,6 +17,10 @@ namespace TourneyPlaner.Pages.MatchupTeam
 
         }
 
+        /// <summary>
+        /// Upon submitting a form to create a matchup team, inserts the matchup team's attributes as a row for the database table
+        /// </summary>
+        /// <returns>Matchup teams page</returns>
         public IActionResult OnPost()
         {
             int score = MatchupTeamCreate.score;
@@ -37,6 +41,9 @@ namespace TourneyPlaner.Pages.MatchupTeam
             return RedirectToPage("/MatchupTeam/MatchupTeam");
         }
     }
+    /// <summary>
+    /// Required attributes for creating a matchup team
+    /// </summary>
     public class MatchupTeamCreate
     {
         [Required]

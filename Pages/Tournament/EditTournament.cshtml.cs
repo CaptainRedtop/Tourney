@@ -17,7 +17,7 @@ namespace TourneyPlaner.Pages.Tournament
 
         }
         /// <summary>
-        /// Upon submitting a form to edit a a tournament's data, reflects the changes onto the database
+        /// Upon submitting a form to edit a tournament's data, reflects the changes onto the database
         /// </summary>
         /// <returns>Tournaments page</returns>
         public IActionResult OnPost()

@@ -17,7 +17,10 @@ namespace TourneyPlaner.Pages.GameType
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to create a game type, inserts the game type's attributes as a row for the database table
+        /// </summary>
+        /// <returns>Matchups page</returns>
         public IActionResult OnPost()
         {
             string name = GameTypeCreate.name;
@@ -39,6 +42,10 @@ namespace TourneyPlaner.Pages.GameType
             return RedirectToPage("/GameType/GameType");
         }
     }
+
+    /// <summary>
+    /// Required attributes for creating a game type
+    /// </summary>
     public class GameTypeCreate
     {
         [Required]

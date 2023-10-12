@@ -18,7 +18,10 @@ namespace TourneyPlaner.Pages.MatchupTeam
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to edit a matchup team's data, reflects the changes onto the database
+        /// </summary>
+        /// <returns>Matchup teams page</returns>
         public IActionResult OnPost()
         {
             int score = MatchupTeamEdit.score;
@@ -42,6 +45,9 @@ namespace TourneyPlaner.Pages.MatchupTeam
             return RedirectToPage("/MatchupTeam/MatchupTeam");
         }
     }
+    /// <summary>
+    /// Required attributes for editing a matchup team
+    /// </summary>
     public class MatchupTeamEdit
     {
         [Required]

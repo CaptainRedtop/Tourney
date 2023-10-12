@@ -9,6 +9,10 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
     {
         Connection con = new Connection();
 
+
+        /// <summary>
+        /// Upon selecting a favorite matchup to delete, deletes said favorite matchup from the database
+        /// </summary>
         public void OnGet()
         {
             string url = Request.GetDisplayUrl();

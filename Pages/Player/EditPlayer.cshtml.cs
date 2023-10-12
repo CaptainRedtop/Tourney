@@ -18,7 +18,7 @@ namespace TourneyPlaner.Pages.Player
 
         }
         /// <summary>
-        /// Upon submitting a form to edit a a player's data, reflects the changes onto the database
+        /// Upon submitting a form to edit a player's data, reflects the changes onto the database
         /// </summary>
         /// <returns>Players page</returns>
         public IActionResult OnPost()

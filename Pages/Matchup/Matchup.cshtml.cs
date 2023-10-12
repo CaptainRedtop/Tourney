@@ -7,7 +7,13 @@ namespace TourneyPlaner.Pages.Matchup
     public class MatchupModel : PageModel
     {
         Connection con = new Connection();
+
+        // Holds list of matchups to display on HTML
         public List<MatchupInfo> matchupList = new List<MatchupInfo>();
+
+        /// <summary>
+        /// Gets every matchup in the table, adds it to a list to display on the html page
+        /// </summary>
         public void OnGet()
         {
             try
@@ -21,6 +27,7 @@ namespace TourneyPlaner.Pages.Matchup
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+                            // For every matchup in table, creates an object that represents said matchup, and adds it to a list
                             while (reader.Read())
                             {
                                 MatchupInfo matchup = new MatchupInfo();
@@ -43,6 +50,10 @@ namespace TourneyPlaner.Pages.Matchup
             }
         }
     }
+
+    /// <summary>
+    /// Required attributes for displaying a matchup
+    /// </summary>
     public class MatchupInfo
     {
         public int iD;

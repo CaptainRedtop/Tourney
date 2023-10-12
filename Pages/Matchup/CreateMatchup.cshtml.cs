@@ -16,7 +16,10 @@ namespace TourneyPlaner.Pages.Matchup
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to create a matchup, inserts the matchup's attributes as a row for the database table
+        /// </summary>
+        /// <returns>Matchups page</returns>
         public IActionResult OnPost()
         {
             DateTime startDateTime = MatchupCreate.startDateTime;
@@ -38,6 +41,9 @@ namespace TourneyPlaner.Pages.Matchup
             return RedirectToPage("/Matchup/Matchup");
         }
     }
+    /// <summary>
+    /// Required attributes for creating a matchup
+    /// </summary>
     public class MatchupCreate
     {
         [Required]

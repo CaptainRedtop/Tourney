@@ -9,6 +9,9 @@ namespace TourneyPlaner.Pages.GameType
     {
         Connection con = new Connection();
 
+        /// <summary>
+        /// Upon selecting a game type to delete, deletes said game type from the database
+        /// </summary>
         public void OnGet()
         {
             string url = Request.GetDisplayUrl();

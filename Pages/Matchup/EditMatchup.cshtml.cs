@@ -18,7 +18,10 @@ namespace TourneyPlaner.Pages.Matchup
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to edit a matchup's data, reflects the changes onto the database
+        /// </summary>
+        /// <returns>Matchups page</returns>
         public IActionResult OnPost()
         {
             DateTime startDateTime = MatchupEdit.startDateTime;
@@ -43,6 +46,9 @@ namespace TourneyPlaner.Pages.Matchup
             return RedirectToPage("/Matchup/Matchup");
         }
     }
+    /// <summary>
+    /// Required attributes for editing a matchup
+    /// </summary>
     public class MatchupEdit
     {
         [Required]

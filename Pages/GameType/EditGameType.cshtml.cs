@@ -18,7 +18,10 @@ namespace TourneyPlaner.Pages.GameType
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to edit a game type's data, reflects the changes onto the database
+        /// </summary>
+        /// <returns>Matchups page</returns>
         public IActionResult OnPost()
         {
             string name = GameTypeEdit.name;
@@ -43,6 +46,10 @@ namespace TourneyPlaner.Pages.GameType
             return RedirectToPage("/GameType/GameType");
         }
     }
+
+    /// <summary>
+    /// Required attributes for editing a game type
+    /// </summary>
     public class GameTypeEdit
     {
         [Required]

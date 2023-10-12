@@ -16,7 +16,7 @@ namespace TourneyPlaner.Pages.Team
 
         }
         /// <summary>
-        /// Upon submitting a form to edit a a team's data, reflects the changes onto the database
+        /// Upon submitting a form to edit a team's data, reflects the changes onto the database
         /// </summary>
         /// <returns>Teams page</returns>
         public IActionResult OnPost()
