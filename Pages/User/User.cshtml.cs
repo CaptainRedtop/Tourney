@@ -7,6 +7,7 @@ namespace TourneyPlaner.Pages
     public class UsersModel : PageModel
     {
         // Holds list of users to display on HTML
+
         public List<UserInfo> listUsers = new List<UserInfo>();
         public void OnGet()
         {
