@@ -14,7 +14,10 @@ namespace TourneyPlaner.Pages.User
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to create a user, inserts the user's attributes as a row for the database table
+        /// </summary>
+        /// <returns>User page</returns>
         public IActionResult OnPost()
         {
             string email = createUser.email;
@@ -35,6 +38,9 @@ namespace TourneyPlaner.Pages.User
             return RedirectToPage("/User/User");
         }
     }
+    /// <summary>
+    /// Required attributes for creating a user
+    /// </summary>
     public class CreateUser
     {
         [Required]

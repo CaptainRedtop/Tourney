@@ -12,6 +12,11 @@ namespace TourneyPlaner.Pages
         public void OnGet()
         {
         }
+
+        /// <summary>
+        /// Upon submitting login form, checks credentials
+        /// </summary>
+        /// <returns>Admin page</returns>
         public IActionResult OnPost()
         {
 
@@ -21,13 +26,16 @@ namespace TourneyPlaner.Pages
             }
             else
             {
-                // Hvis ikke korrekt, vis en fejlmeddelelse
+                // If not correct, show an error message
                 ModelState.AddModelError(string.Empty, "Wrong username or password :(");
                 return Page();
             }
         }
 
     }
+    /// <summary>
+    /// Required attributes for login
+    /// </summary>
     public class Credential
     {
         [Required]

@@ -14,7 +14,10 @@ namespace TourneyPlaner.Pages.TournamentType
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to edit a a tournament type's data, reflects the changes onto the database
+        /// </summary>
+        /// <returns>Tournament type page</returns>
         public IActionResult OnPost()
         {
             string name = TournamentTypeEdit.name;
@@ -36,6 +39,9 @@ namespace TourneyPlaner.Pages.TournamentType
             return RedirectToPage("/TournamentType/TournamentType");
         }
     }
+    /// <summary>
+    /// Required attributes for editing a tournament type
+    /// </summary>
     public class TournamentTypeEdit
     {
         [Required]

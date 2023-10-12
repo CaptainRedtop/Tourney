@@ -16,7 +16,10 @@ namespace TourneyPlaner.Pages.Player
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to edit a a player's data, reflects the changes onto the database
+        /// </summary>
+        /// <returns>Players page</returns>
         public IActionResult OnPost()
         {
             string firstName = PlayerEdit.firstName;
@@ -40,6 +43,9 @@ namespace TourneyPlaner.Pages.Player
             return RedirectToPage("/Player/Player");
         }
     }
+    /// <summary>
+    /// Required attributes for editing a player
+    /// </summary>
     public class CreatePlayer
     {
         [Required]

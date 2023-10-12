@@ -14,7 +14,10 @@ namespace TourneyPlaner.Pages.Team
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to create a team, inserts the team's attributes as a row for the database table
+        /// </summary>
+        /// <returns>Tournaments page</returns>
         public IActionResult OnPost()
         {
             string name = teamCreate.name;
@@ -33,6 +36,9 @@ namespace TourneyPlaner.Pages.Team
             return RedirectToPage("/Team/Team");
         }
     }
+    /// <summary>
+    /// Required attributes to create a team
+    /// </summary>
     public class TeamCreate
     {
         [Required]

@@ -14,7 +14,10 @@ namespace TourneyPlaner.Pages.Team
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to edit a a team's data, reflects the changes onto the database
+        /// </summary>
+        /// <returns>Teams page</returns>
         public IActionResult OnPost()
         {
             string name = teamEdit.name;
@@ -36,6 +39,9 @@ namespace TourneyPlaner.Pages.Team
             return RedirectToPage("/Team/Team");
         }
     }
+    /// <summary>
+    /// Required attributes for editing a team
+    /// </summary>
     public class TeamEdit
     {
         [Required]

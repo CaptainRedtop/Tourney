@@ -6,7 +6,11 @@ namespace TourneyPlaner.Pages.Player
 {
     public class PlayerModel : PageModel
     {
+        // Holds list of players to display on HTML
         public List<PlayerInfo> listPlayer = new List<PlayerInfo>();
+        /// <summary>
+        /// Gets every player in the table, adds it to a list to display on the html page
+        /// </summary>
         public void OnGet()
         {
             try
@@ -20,6 +24,7 @@ namespace TourneyPlaner.Pages.Player
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+                            // For every player in table, creates an object that represents said player, and adds it to a list
                             while (reader.Read())
                             {
                                 PlayerInfo player = new PlayerInfo();
@@ -41,7 +46,9 @@ namespace TourneyPlaner.Pages.Player
             }
         }
     }
-   
+   /// <summary>
+   /// Required attributes for displaying a player
+   /// </summary>
     public class PlayerInfo
     {
         public int playerID;

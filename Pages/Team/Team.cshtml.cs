@@ -7,7 +7,11 @@ namespace TourneyPlaner.Pages.Team
 {
     public class TeamModel : PageModel
     {
+        // Holds list of teams to display on HTML
         public List<TeamInfo> teamList = new List<TeamInfo>();
+        /// <summary>
+        /// Gets every team in the table, adds it to a list to display on the html page
+        /// </summary>
         public void OnGet()
         {
             try
@@ -21,6 +25,7 @@ namespace TourneyPlaner.Pages.Team
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+                            // For every team in table, creates an object that represents said team, and adds it to a list
                             while (reader.Read())
                             {
                                 TeamInfo team = new TeamInfo();
@@ -40,6 +45,9 @@ namespace TourneyPlaner.Pages.Team
             }
         }
     }
+    /// <summary>
+    /// Required attributes for displaying a team
+    /// </summary>
     public class TeamInfo
     {
         public int Id;

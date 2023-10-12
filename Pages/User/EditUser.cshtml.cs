@@ -15,6 +15,10 @@ namespace TourneyPlaner.Pages.User
 
         }
 
+        /// <summary>
+        /// Upon submitting a form to edit a user's data, reflects the changes onto the database
+        /// </summary>
+        /// <returns>Users page</returns>
         public IActionResult OnPost()
         {
             string email = userEdit.email;
@@ -38,6 +42,9 @@ namespace TourneyPlaner.Pages.User
             return RedirectToPage("/User/User");
         }
     }
+    /// <summary>
+    /// Required attributes for editing a user
+    /// </summary>
     public class UserCreate
     {
         [Required]

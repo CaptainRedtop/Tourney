@@ -8,6 +8,10 @@ namespace TourneyPlaner.Pages.Player
 {
     public class DeletePlayerModel : PageModel
     {
+        /// <summary>
+        /// Upon selecting a player to delete, deletes said player from the database
+        /// </summary>
+        /// <returns>Players page</returns>
         public IActionResult OnGet()
         {
             string url = Request.GetDisplayUrl();

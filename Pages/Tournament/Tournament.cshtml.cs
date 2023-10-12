@@ -6,7 +6,12 @@ namespace TourneyPlaner.Pages.Tournament
 {
     public class TournamentModel : PageModel
     {
+        // Holds list of tournaments to display on HTML
         public List<TournamentInfo> tournaments = new List<TournamentInfo>();
+
+        /// <summary>
+        /// Gets every tournament in the table, adds it to a list to display on the html page
+        /// </summary>
         public void OnGet()
         {
             try
@@ -20,6 +25,7 @@ namespace TourneyPlaner.Pages.Tournament
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+                            // For every tournament in table, creates an object that represents said tournament, and adds it to a list
                             while (reader.Read())
                             {
                                 TournamentInfo tournament = new TournamentInfo();
@@ -44,6 +50,9 @@ namespace TourneyPlaner.Pages.Tournament
             }
         }
     }
+    /// <summary>
+    /// Required attributes for displaying tournament
+    /// </summary>
     public class TournamentInfo
     {
         public int tournamentID;

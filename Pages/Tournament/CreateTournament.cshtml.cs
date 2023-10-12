@@ -14,7 +14,10 @@ namespace TourneyPlaner.Pages.Tournament
         {
 
         }
-
+        /// <summary>
+        /// Upon submitting a form to create atournament, inserts the tournament's attributes as a row for the database table
+        /// </summary>
+        /// <returns>Tournaments page</returns>
         public IActionResult OnPost()
         {
             string name = TournamentCreate.name;
@@ -38,6 +41,9 @@ namespace TourneyPlaner.Pages.Tournament
             return RedirectToPage("/Tournament/Tournament");
         }
     }
+    /// <summary>
+    /// Required attributes for creating a tournament
+    /// </summary>
     public class CreateTournament
     {
         [Required]

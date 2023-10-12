@@ -7,6 +7,10 @@ namespace TourneyPlaner.Pages.Team
 {
     public class DeleteModel : PageModel
     {
+        /// <summary>
+        /// Upon selecting a team to delete, deletes said team from the database
+        /// </summary>
+        /// <returns>Tournaments page</returns>
         public IActionResult OnGet()
         {
             string url = Request.GetDisplayUrl();

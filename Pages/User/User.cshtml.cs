@@ -6,6 +6,7 @@ namespace TourneyPlaner.Pages
 {
     public class UsersModel : PageModel
     {
+        // Holds list of users to display on HTML
         public List<UserInfo> listUsers = new List<UserInfo>();
         public void OnGet()
         {
@@ -20,6 +21,7 @@ namespace TourneyPlaner.Pages
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+                            // For every user in table, creates an object that represents said user, and adds it to a list
                             while (reader.Read())
                             {
                                 UserInfo user = new UserInfo();
