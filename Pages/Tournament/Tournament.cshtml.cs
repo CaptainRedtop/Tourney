@@ -4,8 +4,13 @@ using System.Data.SqlClient;
 
 namespace TourneyPlaner.Pages.Tournament
 {
+    /// <summary>
+    /// MSSQL connection and query read
+    /// </summary>
     public class TournamentModel : PageModel
     {
+        Connection con = new Connection();
+
         // Holds list of tournaments to display on HTML
         public List<TournamentInfo> tournaments = new List<TournamentInfo>();
 
@@ -16,7 +21,7 @@ namespace TourneyPlaner.Pages.Tournament
         {
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

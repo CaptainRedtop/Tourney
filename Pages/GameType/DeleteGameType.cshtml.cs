@@ -7,13 +7,15 @@ namespace TourneyPlaner.Pages.GameType
 {
     public class DeleteModel : PageModel
     {
+        Connection con = new Connection();
+
         public void OnGet()
         {
             string url = Request.GetDisplayUrl();
             string[] urlID = url.Split('=');
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

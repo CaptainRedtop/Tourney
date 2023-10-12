@@ -6,12 +6,13 @@ namespace TourneyPlaner.Pages.Matchup
 {
     public class MatchupModel : PageModel
     {
+        Connection con = new Connection();
         public List<MatchupInfo> matchupList = new List<MatchupInfo>();
         public void OnGet()
         {
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

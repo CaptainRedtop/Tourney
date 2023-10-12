@@ -7,6 +7,8 @@ namespace TourneyPlaner.Pages.TournamentType
 {
     public class DeleteModel : PageModel
     {
+        Connection con = new Connection();
+
         /// <summary>
         /// Upon selecting a tournament type to delete, deletes said tournament type from the database
         /// </summary>
@@ -17,7 +19,7 @@ namespace TourneyPlaner.Pages.TournamentType
             string[] urlID = url.Split('=');
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

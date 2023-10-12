@@ -1,0 +1,55 @@
+﻿@page
+@model TourneyPlaner.Pages.GameType.CreateGameTypeModel
+@{
+}
+<br />
+<h2>Create Game Type</h2>
+<br />
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class"text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="GameTypeCreate.name"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="GameTypeCreate.name" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="GameTypeCreate.name"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="GameTypeCreate.teamsPerMatch"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="GameTypeCreate.teamsPerMatch" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="GameTypeCreate.teamsPerMatch"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="GameTypeCreate.pointsForDraw"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="GameTypeCreate.pointsForDraw" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="GameTypeCreate.pointsForDraw"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="GameTypeCreate.pointsForWin"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="GameTypeCreate.pointsForWin" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="GameTypeCreate.pointsForWin"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+            <div class="col-5">
+            </div>
+        </div>
+    </form>
+</div>

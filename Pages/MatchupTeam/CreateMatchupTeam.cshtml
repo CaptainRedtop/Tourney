@@ -1,40 +1,39 @@
 ﻿@page
-@model TourneyPlaner.Pages.User.CreateUser_Model
+@model TourneyPlaner.Pages.MatchupTeam.CreateMatchupTeamModel
 @{
 }
-<!--Form for creating a user-->
 <br />
-<h2>Create User</h2>
+<h2>Create Matchup Team</h2>
 <br />
 <div class="container border" style="padding:20px">
     <form method="post">
         <div class"text-danger" asp-validation-summary="ModelOnly"></div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="createUser.email"></label>
+                <label asp-for="MatchupTeamCreate.score"></label>
             </div>
             <div class="col-5">
-                <input type="text" asp-for="createUser.email" class="form-control" />
+                <input type="text" asp-for="MatchupTeamCreate.score" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="createUser.email"></span>
+            <span class="text-danger" asp-validation-for="MatchupTeamCreate.score"></span>
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="createUser.passwordHash"></label>
+                <label asp-for="MatchupTeamCreate.teamId"></label>
             </div>
             <div class="col-5">
-                <input type="text" asp-for="createUser.passwordHash" class="form-control" />
+                <input type="text" asp-for="MatchupTeamCreate.teamId" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="createUser.passwordHash"></span>
+            <span class="text-danger" asp-validation-for="MatchupTeamCreate.teamId"></span>
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="createUser.salt"></label>
+                <label asp-for="MatchupTeamCreate.matchupId"></label>
             </div>
             <div class="col-5">
-                <input type="text" asp-for="createUser.salt" class="form-control" />
+                <input type="text" asp-for="MatchupTeamCreate.matchupId" class="form-control" />
             </div>
-            <span class="text-danger" asp-validation-for="createUser.salt"></span>
+            <span class="text-danger" asp-validation-for="MatchupTeamCreate.matchupId"></span>
         </div>
         <div class="form-group row">
             <div class="col-2">

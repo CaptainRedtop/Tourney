@@ -3,9 +3,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
 namespace TourneyPlaner.Pages.TournamentType
-{
+{    /// <summary>
+     /// MSSQL connection and query read
+     /// </summary>
     public class TournamentTypeModel : PageModel
     {
+        Connection con = new Connection();
+
         // Holds list of tournament types to display on HTML
         public List<TournamentTypeInfo> listTournamentType = new List<TournamentTypeInfo>();
 
@@ -16,8 +20,7 @@ namespace TourneyPlaner.Pages.TournamentType
         {
             try
             {
-                //string connectionString = "Data Source=ZBC-S-NICK9281;Initial Catalog=HjemmeTest;User ID=HjemmeLogin;Password=Kode1234!";
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

@@ -1,19 +1,17 @@
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 
 namespace TourneyPlaner.Pages.Matchup
 {
-    public class EditModel : PageModel
+    public class CreateMatchupModel : PageModel
     {
         Connection con = new Connection();
         [BindProperty]
-        public MatchupEdit MatchupEdit { get; set; }
+        public MatchupCreate MatchupCreate { get; set; }
         public void OnGet()
         {
 
@@ -21,19 +19,16 @@ namespace TourneyPlaner.Pages.Matchup
 
         public IActionResult OnPost()
         {
-            DateTime startDateTime = MatchupEdit.startDateTime;
-            int rounds = MatchupEdit.rounds;
-            int tournamentId = MatchupEdit.tournamentId;
-            int nextMatchupId = MatchupEdit.nextMatchupId;
-
-            string url = Request.GetDisplayUrl();
-            string[] iD = url.Split('=');
+            DateTime startDateTime = MatchupCreate.startDateTime;
+            int rounds = MatchupCreate.rounds;
+            int tournamentId = MatchupCreate.tournamentId;
+            int nextMatchupId = MatchupCreate.nextMatchupId;
 
             string connectionString = con.ConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE Matchup SET StartDateTime = '{startDateTime}', Rounds = '{rounds}', TournamentId = '{tournamentId}', NextMatchupId = '{nextMatchupId}' WHERE Id = {iD.AsQueryable().Last()}";
+                string sql = $"INSERT INTO Matchup (StartDateTime, Rounds, TournamentId, NextMatchupId) VALUES ('{startDateTime}','{rounds}', '{tournamentId}', '{nextMatchupId}')";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
@@ -43,7 +38,7 @@ namespace TourneyPlaner.Pages.Matchup
             return RedirectToPage("/Matchup/Matchup");
         }
     }
-    public class MatchupEdit
+    public class MatchupCreate
     {
         [Required]
         public DateTime startDateTime { get; set; }

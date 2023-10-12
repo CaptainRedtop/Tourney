@@ -6,6 +6,7 @@ namespace TourneyPlaner.Pages.Player
 {
     public class PlayerModel : PageModel
     {
+        Connection con = new Connection();
         // Holds list of players to display on HTML
         public List<PlayerInfo> listPlayer = new List<PlayerInfo>();
         /// <summary>
@@ -15,7 +16,7 @@ namespace TourneyPlaner.Pages.Player
         {
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

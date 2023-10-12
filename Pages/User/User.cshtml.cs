@@ -6,18 +6,24 @@ namespace TourneyPlaner.Pages
 {
     public class UsersModel : PageModel
     {
-        // Holds list of users to display on HTML
+        Connection con = new Connection();
 
+        // Holds list of users to display on HTML
         public List<UserInfo> listUsers = new List<UserInfo>();
+
+        /// <summary>
+        /// Gets every user in the table, adds it to a list to display on the html page
+        /// </summary>
         public void OnGet()
         {
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
+                //string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "SELECT * FROM User";
+                    string sql = "SELECT * FROM [User]";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -46,6 +52,9 @@ namespace TourneyPlaner.Pages
         }
     }
 
+    /// <summary>
+    /// Required attributes for displaying a user
+    /// </summary>
     public class UserInfo
     {
         public int userID;

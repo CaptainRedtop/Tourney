@@ -5,10 +5,16 @@ using TourneyPlaner.Pages.Player;
 
 namespace TourneyPlaner.Pages.Team
 {
+    /// <summary>
+    /// MSSQL connection and query read
+    /// </summary>
     public class TeamModel : PageModel
     {
+        Connection con = new Connection();
+
         // Holds list of teams to display on HTML
         public List<TeamInfo> teamList = new List<TeamInfo>();
+
         /// <summary>
         /// Gets every team in the table, adds it to a list to display on the html page
         /// </summary>
@@ -16,7 +22,7 @@ namespace TourneyPlaner.Pages.Team
         {
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

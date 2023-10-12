@@ -10,6 +10,7 @@ namespace TourneyPlaner.Pages.Player
 {
     public class EditModel : PageModel
     {
+        Connection con = new Connection();
         [BindProperty]
         public CreatePlayer PlayerEdit { get; set; }
         public void OnGet()
@@ -29,7 +30,7 @@ namespace TourneyPlaner.Pages.Player
             string url = Request.GetDisplayUrl();
             string[] playerID = url.Split('=');
 
-            string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+            string connectionString = con.ConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

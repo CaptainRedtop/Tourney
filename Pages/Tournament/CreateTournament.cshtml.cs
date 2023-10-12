@@ -8,6 +8,7 @@ namespace TourneyPlaner.Pages.Tournament
 {
     public class CreateTournamentModel : PageModel
     {
+        Connection con = new Connection();
         [BindProperty]
         public CreateTournament TournamentCreate { get; set; }
         public void OnGet()
@@ -27,7 +28,7 @@ namespace TourneyPlaner.Pages.Tournament
             int tournamentTypeID = TournamentCreate.tournamentTypeID;
             int userID = TournamentCreate.userID;
 
-            string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+            string connectionString = con.ConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

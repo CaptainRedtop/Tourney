@@ -5,6 +5,9 @@ using System.Xml.Linq;
 
 namespace TourneyPlaner.Pages
 {
+    /// <summary>
+    /// Login page
+    /// </summary>
     public class IndexModel : PageModel
     {
         [BindProperty]
