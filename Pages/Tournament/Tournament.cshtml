@@ -19,7 +19,8 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var tournament in Model.tournaments)
+        <!--Retrieves all the tournament objects from list-->
+        @foreach (var tournament in Model.tournaments)
             {
                 <tr>
                     <td>@tournament.tournamentID</td>
