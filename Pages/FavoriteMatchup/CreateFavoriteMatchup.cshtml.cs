@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 
-namespace TourneyPlaner.Pages.Player
+namespace TourneyPlaner.Pages.FavoriteMatchup
 {
-    public class CreatePlayerModel : PageModel
+    public class CreateFavoriteMatchupModel : PageModel
     {
         Connection con = new Connection();
+
         [BindProperty]
-        public PlayerCreate PlayerCreate { get; set; }
+        public FavoriteMatchupCreate FavoriteMatchupCreate { get; set; }
         public void OnGet()
         {
 
@@ -18,31 +19,28 @@ namespace TourneyPlaner.Pages.Player
 
         public IActionResult OnPost()
         {
-            string firstName = PlayerCreate.firstName;
-            string lastName = PlayerCreate.lastName;
-            int teamID = PlayerCreate.teamID;
+            int matchupId = FavoriteMatchupCreate.matchupId;
+            int userId = FavoriteMatchupCreate.userId;
 
             string connectionString = con.ConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"INSERT INTO Player (FirstName, LastName, TeamId) VALUES ('{firstName}','{lastName}',{teamID})";
+                string sql = $"INSERT INTO FavoriteMatchup (MatchupId, UserId) VALUES ('{matchupId}','{userId}')";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
             }
-            return RedirectToPage("/Player/Player");
+            return RedirectToPage("/FavoriteMatchup/FavoriteMatchup");
         }
     }
-    public class PlayerCreate
+    public class FavoriteMatchupCreate
     {
         [Required]
-        public string firstName { get; set; }
+        public int matchupId { get; set; }
         [Required]
-        public string lastName { get; set; }
-        [Required]
-        public int teamID { get; set; }
+        public int userId { get; set; }
     }
 }

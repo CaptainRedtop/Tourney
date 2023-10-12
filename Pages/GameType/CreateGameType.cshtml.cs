@@ -1,19 +1,18 @@
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
-using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 
 namespace TourneyPlaner.Pages.GameType
 {
-    public class EditModel : PageModel
+    public class CreateGameTypeModel : PageModel
     {
         Connection con = new Connection();
 
         [BindProperty]
-        public GameTypeEdit GameTypeEdit { get; set; }
+        public GameTypeCreate GameTypeCreate { get; set; }
         public void OnGet()
         {
 
@@ -21,19 +20,16 @@ namespace TourneyPlaner.Pages.GameType
 
         public IActionResult OnPost()
         {
-            string name = GameTypeEdit.name;
-            int teamsPerMatch = GameTypeEdit.teamsPerMatch;
-            int pointsForDraw = GameTypeEdit.pointsForDraw;
-            int pointsForWin = GameTypeEdit.pointsForWin;
-
-            string url = Request.GetDisplayUrl();
-            string[] iD = url.Split('=');
+            string name = GameTypeCreate.name;
+            int teamsPerMatch = GameTypeCreate.teamsPerMatch;
+            int pointsForDraw = GameTypeCreate.pointsForDraw;
+            int pointsForWin = GameTypeCreate.pointsForWin;
 
             string connectionString = con.ConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"UPDATE GameType SET Name = '{name}', TeamsPerMatch = '{teamsPerMatch}', PointsForDraw = '{pointsForDraw}', PointsForWin = '{pointsForWin}' WHERE Id = {iD.AsQueryable().Last()}";
+                string sql = $"INSERT INTO GameType (Name, TeamsPerMatch, PointsForDraw, PointsForWin) VALUES ('{name}','{teamsPerMatch}', '{pointsForDraw}', '{pointsForWin}')";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
@@ -43,15 +39,15 @@ namespace TourneyPlaner.Pages.GameType
             return RedirectToPage("/GameType/GameType");
         }
     }
-    public class GameTypeEdit
+    public class GameTypeCreate
     {
         [Required]
         public string name { get; set; }
         [Required]
         public int teamsPerMatch { get; set; }
         [Required]
-        public int pointsForDraw { get; set;}
+        public int pointsForDraw { get; set; }
         [Required]
-        public int pointsForWin { get; set;}
+        public int pointsForWin { get; set; }
     }
 }

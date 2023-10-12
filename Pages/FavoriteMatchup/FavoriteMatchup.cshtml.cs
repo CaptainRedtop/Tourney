@@ -6,12 +6,14 @@ namespace TourneyPlaner.Pages.FavoriteMatchup
 {
     public class FavoriteMatchupModel : PageModel
     {
+        Connection con = new Connection();
+
         public List<FavoriteMatchupInfo> favoriteMatchupList = new List<FavoriteMatchupInfo>();
         public void OnGet()
         {
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

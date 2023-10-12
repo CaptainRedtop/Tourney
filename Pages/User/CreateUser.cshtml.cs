@@ -8,6 +8,7 @@ namespace TourneyPlaner.Pages.User
 {
     public class CreateUser_Model : PageModel
     {
+        Connection con = new Connection();
         [BindProperty]
         public CreateUser createUser { get; set; }
         public void OnGet()
@@ -21,11 +22,11 @@ namespace TourneyPlaner.Pages.User
             string passwordHash = createUser.passwordHash;
             string salt = createUser.salt;
 
-            string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+            string connectionString = con.ConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"INSERT INTO User(Email, PasswordHash, Salt) VALUSE ({email}', '{passwordHash}', '{salt}')";
+                string sql = $"INSERT INTO [User] (Email, PasswordHash, Salt) VALUES ('{email}', '{passwordHash}', '{salt}')";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();

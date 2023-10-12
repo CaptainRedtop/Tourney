@@ -6,16 +6,18 @@ namespace TourneyPlaner.Pages
 {
     public class UsersModel : PageModel
     {
+        Connection con = new Connection();
         public List<UserInfo> listUsers = new List<UserInfo>();
         public void OnGet()
         {
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
+                //string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "SELECT * FROM User";
+                    string sql = "SELECT * FROM [User]";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())

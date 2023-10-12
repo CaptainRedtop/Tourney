@@ -5,14 +5,18 @@ using TourneyPlaner.Pages.Player;
 
 namespace TourneyPlaner.Pages.Team
 {
+    /// <summary>
+    /// MSSQL connection and query read
+    /// </summary>
     public class TeamModel : PageModel
     {
+        Connection con = new Connection();
         public List<TeamInfo> teamList = new List<TeamInfo>();
         public void OnGet()
         {
             try
             {
-                string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+                string connectionString = con.ConnectionString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

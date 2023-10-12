@@ -8,6 +8,8 @@ namespace TourneyPlaner.Pages.Tournament
 {
     public class EditModel : PageModel
     {
+        Connection con = new Connection();
+
         [BindProperty]
         public TournamentCreate TournamentEdit { get; set; }
         public void OnGet()
@@ -27,7 +29,7 @@ namespace TourneyPlaner.Pages.Tournament
             string url = Request.GetDisplayUrl();
             string[] urlID = url.Split('=');
 
-            string connectionString = "Data Source=192.168.1.4;Initial Catalog=TourneyPlannerDev;User ID=TourneyAdmin;Password=Kode1234!";
+            string connectionString = con.ConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

@@ -3,14 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
-namespace TourneyPlaner.Pages.Player
+namespace TourneyPlaner.Pages.MatchupTeam
 {
-    public class CreatePlayerModel : PageModel
+    public class CreateMatchupTeamModel : PageModel
     {
         Connection con = new Connection();
         [BindProperty]
-        public PlayerCreate PlayerCreate { get; set; }
+        public MatchupTeamCreate MatchupTeamCreate { get; set; }
         public void OnGet()
         {
 
@@ -18,31 +19,31 @@ namespace TourneyPlaner.Pages.Player
 
         public IActionResult OnPost()
         {
-            string firstName = PlayerCreate.firstName;
-            string lastName = PlayerCreate.lastName;
-            int teamID = PlayerCreate.teamID;
+            int score = MatchupTeamCreate.score;
+            int teamId = MatchupTeamCreate.teamId;
+            int matchupId = MatchupTeamCreate.matchupId;
 
             string connectionString = con.ConnectionString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = $"INSERT INTO Player (FirstName, LastName, TeamId) VALUES ('{firstName}','{lastName}',{teamID})";
+                string sql = $"INSERT INTO MatchupTeam (Score, TeamId, MatchupId) VALUES ('{score}','{teamId}', '{matchupId}')";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
             }
-            return RedirectToPage("/Player/Player");
+            return RedirectToPage("/MatchupTeam/MatchupTeam");
         }
     }
-    public class PlayerCreate
+    public class MatchupTeamCreate
     {
         [Required]
-        public string firstName { get; set; }
+        public int score { get; set; }
         [Required]
-        public string lastName { get; set; }
+        public int teamId { get; set; }
         [Required]
-        public int teamID { get; set; }
+        public int matchupId { get; set; }
     }
 }
