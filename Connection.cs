@@ -1,5 +1,8 @@
 ﻿namespace TourneyPlaner
 {
+    /// <summary>
+    /// The connection string for the MSSQL server.
+    /// </summary>
     public class Connection
     {
         public string ConnectionString()

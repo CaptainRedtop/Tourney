@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Proxima;
+    src: url('/assets/Proxima.ttf') format("truetype");
+}
+
 html {
   font-size: 14px;
 }
@@ -14,5 +19,6 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: Proxima;
 }

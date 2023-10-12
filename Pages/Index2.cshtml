@@ -3,7 +3,58 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<body>
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-4 fw-bolder text-white mb-2">TOURNEY PLANNER</h1>
+                        <h2 class="display-6 fw-bolder text-white mb-2">🔧 ADMIN SITE 🔧</h2>
+
+                        <p class="lead text-white-50 mb-4">"A tournament admin site is a powerful tool that streamlines the entire tournament management process, including participant registration, scheduling, result tracking, and seamless communication."</p>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-page="/Player/Player">Manage Players</a>
+                            <a class="btn btn-outline-light btn-lg px-4" asp-page="/Tournament/Tournament">Manage Tournaments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Features section-->
+    <section class="py-5 border-bottom" id="features">
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                    <h2 style="text-align:center" class="h4 fw-bolder">Number of Users</h2>
+                    <p style="font-size:xx-large; text-align:center">@Model.userCount</p>
+                    <a class="h4 fw-bolder" asp-page="/User/User">
+                        <p style="text-align:center">Go to Users</p>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                    <h2 style="text-align:center" class="h4 fw-bolder">Number of Teams</h2>
+                    <p style="font-size:xx-large; text-align:center">@Model.teamCount</p>
+                    <a class="h4 fw-bolder" asp-page="/Team/Team">
+                        <p style="text-align:center">Go to Teams</p>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                    <h2 style="text-align:center" class="h4 fw-bolder">Number of GameTypes</h2>
+                    <p style="font-size:xx-large; text-align:center">@Model.gameTypeCount</p>
+                    <a class="h4 fw-bolder" asp-page="/GameType/GameType">
+                        <p style="text-align:center">Go to GameTypes</p>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
